@@ -23,7 +23,7 @@ CREATE TABLE tb_cliente (
     nr_telefone  CHAR(13) -- FORMATO TELEFONE'55xx9xxxxxxxx'
 );
 
---ALTER TABLE tb_cliente ADD CONSTRAINT pk_cliente PRIMARY KEY ( id_cliente );
+ALTER TABLE tb_cliente ADD CONSTRAINT pk_cliente PRIMARY KEY ( id_cliente );
 
 
     -- Criação da tabela de dados das contas
@@ -31,7 +31,6 @@ CREATE TABLE tb_conta (
     id_conta    NUMBER
         GENERATED ALWAYS AS IDENTITY ( START WITH 1 INCREMENT BY 1 ),
     id_cliente  NUMBER NOT NULL,
-    /*nm_cliente  varchar(40) not null,*/
     nr_conta    NUMBER NOT NULL,
     ds_tipo     VARCHAR2(10) NOT NULL, -- 'POUPANÃ‡A OU CORRENTE';
     nr_saldo    NUMBER(8, 2) NOT NULL,
@@ -45,8 +44,9 @@ ALTER TABLE tb_conta
         REFERENCES tb_cliente ( id_cliente );
         
 -- Consultas
-
+/*
 SELECT * FROM tb_cliente;
 SELECT * FROM tb_conta;
+*/
 
 commit;
