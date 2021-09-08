@@ -1,0 +1,56 @@
+﻿@model Cliente
+@{
+    ViewData["title"] = "Atualização de Cliente";
+}
+
+<style>
+    .background {
+        background-color: #f7f6f6;
+        border-radius: 7px;
+        padding: 2%;
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .inputLabel {
+        min-width: 40%;
+    }
+</style>
+
+<h2 class="text-center">Cadastro de Cliente</h2>
+
+<form asp-action="Editar">
+    <div class="background container-fluid">
+        <div class="form-group">
+            <label asp-for="Nome">Nome</label>
+            <input asp-for="Nome" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <div>
+                <label asp-for="Cpf" class="inputLabel">CPF</label>
+                <input asp-for="Cpf" class="form-control" />
+            </div>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Email" class="inputLabel mt-1">E-mail</label>
+            <input asp-for="Email" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Telefone" class="inputLabel mt-1">Telefone</label>
+            <input asp-for="Telefone" class="form-control" />
+        </div>
+
+        <div class="form-group d-flex justify-content-center">
+            <input type="submit" value="Atualizar" class="btn btn-info" />
+            <a asp-action="listar" class="btn btn-outline-info">Cancelar</a> <br />
+            
+        </div>
+
+
+    </div>
+</form>

@@ -1,0 +1,85 @@
+﻿@model Conta
+@{ ViewData["title"] = "Cadastro de Conta"; }
+
+<style>
+    .background {
+        background-color: #f7f6f6;
+        border-radius: 7px;
+        padding: 2%;
+        width: 35%;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+
+    .inputLabel {
+        min-width: 40%;
+    }
+</style>
+
+@if (@TempData["msg"] != null)
+{
+    <div class="alert alert-success">
+        <h5 class="text-center">@TempData["msg"]</h5>
+    </div>      
+}
+
+<h2 class="text-center">Cadastro de Conta</h2>
+
+<form asp-action="Cadastrar">
+    <div class="background container-fluid">
+        <div class="form-group">
+            <label asp-for="ClienteId" class="inputLabel">Cliente</label>
+            <select asp-for="ClienteId" class="form-control">
+                <option>Selecione</option>
+                @foreach (var item in ViewBag.nomes)
+                {
+                    <option value="@item.ClienteId">@item.Nome</option>
+                }
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="TipoConta" class="inputLabel">Tipo de Conta</label>
+            <select asp-for="TipoConta" class="form-control">
+                <option selected disabled>Selecione</option>
+                <option value="Corrente">Corrente</option>
+                <option value="Poupança">Poupança</option>
+            </select>
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Saldo" class="inputLabel mt-1">Saldo</label>
+            <input asp-for="Saldo" class="form-control" />
+        </div>
+
+        <div class="form-group">
+            <label asp-for="Numero">Número da conta</label>
+            <input asp-for="Numero" class="form-control" />
+        </div>
+
+        <div class="form-group d-flex justify-content-center">
+            <div class="form-group">
+                @foreach (var item in ViewBag.status)
+                {
+    <div class="form-group">
+        <input type="radio" asp-for="Status" value="@item" />
+        <label asp-for="Status">
+            @if (@item == "A")
+            {
+    <p>Ativa</p> }
+                    else
+                    {
+    <p>Desativada</p>}
+        </label>
+    </div>}
+            </div>
+        </div>
+        <div class="form-group d-flex justify-content-center">
+            <input type="submit" value="Criar" class="btn btn-info" />
+            <a asp-action="Listar" class="btn btn-outline-info">Contas</a> <br />
+        </div>
+        
+
+    </div>
+</form>
